@@ -10,8 +10,10 @@ public class Alumno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idAlumno;
 
-    @Column(name = "razonSocial", nullable = false, length = 100)
-    private String razonSocial;
+    @OneToOne
+    @JoinColumn(name = "idPersona",nullable = false)
+    private Persona persona;
+
 
     public int getIdAlumno() {
         return idAlumno;
@@ -21,11 +23,11 @@ public class Alumno {
         this.idAlumno = idAlumno;
     }
 
-    public String getRazonSocial() {
-        return razonSocial;
+    public Persona getPersona() {
+        return persona;
     }
 
-    public void setRazonSocial(String razonSocial) {
-        this.razonSocial = razonSocial;
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 }

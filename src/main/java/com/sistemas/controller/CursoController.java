@@ -22,8 +22,10 @@ public class CursoController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Curso>> listar() {
+
         List<Curso> cursos = new ArrayList<>();
         cursos = service.listar();
+
         return new ResponseEntity<>(cursos, HttpStatus.OK);
     }
 
