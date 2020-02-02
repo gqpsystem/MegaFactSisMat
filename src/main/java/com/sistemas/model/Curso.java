@@ -13,6 +13,12 @@ public class Curso {
     @Column(name = "abreviatura",nullable = false,length = 10)
     private String abreviatura;
 
+    @Column(name = "nomCurso",nullable = false,length = 10)
+    private String nomCurso;
+
+    @Column(name = "credito",nullable = false,length = 10)
+    private int credito;
+
     public int getIdCurso() {
         return idCurso;
     }
@@ -27,5 +33,21 @@ public class Curso {
 
     public void setAbreviatura(String abreviatura) {
         this.abreviatura = abreviatura;
+    }
+
+    public String getNomCurso() {
+        return nomCurso;
+    }
+
+    public void setNomCurso(String nomCurso) {
+        this.nomCurso = nomCurso;
+    }
+
+    public int getCredito() {
+        return credito;
+    }
+
+    public void setCredito(int credito) {
+        this.credito = credito;
     }
 }

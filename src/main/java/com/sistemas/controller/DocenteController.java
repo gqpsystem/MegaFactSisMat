@@ -1,7 +1,8 @@
 package com.sistemas.controller;
 
 import com.sistemas.model.Curso;
-import com.sistemas.service.ICursoService;
+import com.sistemas.model.Docente;
+import com.sistemas.service.IDocenteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,32 +14,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/cursos")
-public class CursoController {
+@RequestMapping(value = "/api/docentes")
+public class DocenteController {
 
     @Autowired
-    private ICursoService service;
+    private IDocenteService service;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Curso>> listar() {
+    public ResponseEntity<List<Docente>> listar() {
 
-        List<Curso> cursos = new ArrayList<>();
-        cursos = service.listar();
+        List<Docente> docentes = new ArrayList<>();
+        docentes = service.listar();
 
-        return new ResponseEntity<>(cursos, HttpStatus.OK);
+        return new ResponseEntity<>(docentes, HttpStatus.OK);
     }
 
     @PostMapping(value = "/registrar", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> registrar(@Valid @RequestBody Curso cursos) {
-        service.registrar(cursos);
+    public ResponseEntity<Object> registrar(@Valid @RequestBody Docente docentes) {
+        service.registrar(docentes);
         return new ResponseEntity<Object>(HttpStatus.OK);
     }
 
     @PutMapping(value = "/actualizar", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> actualizar(@RequestBody Curso Curso) {
-        service.modificar(Curso);
+    public ResponseEntity<Object> actualizar(@RequestBody Docente docentes) {
+        service.modificar(docentes);
         return new ResponseEntity<Object>(HttpStatus.OK);
     }
-
 
 }
