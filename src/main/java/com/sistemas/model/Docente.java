@@ -12,17 +12,16 @@ public class Docente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idDocente;
 
-    @Column(name = "sueldo", nullable = false,length = 11, precision = 2)
+    @Column(name = "sueldo", nullable = false, precision = 11 , scale = 2)
     private BigDecimal sueldo;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idPersona",nullable = false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "persona")
     private Persona persona;
 
-    @ManyToMany
-    @JoinTable(name = "docente_curso", joinColumns = @JoinColumn(name = "id_docente", referencedColumnName = "idDocente"),
-            inverseJoinColumns = @JoinColumn(name = "id_curso",referencedColumnName = "idCurso"))
-    List<Curso> cursos;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "docente_curso", joinColumns = @JoinColumn(name = "id_docente", referencedColumnName = "idDocente"), inverseJoinColumns = @JoinColumn(name = "id_curso", referencedColumnName = "idCurso"))
+    private List<Curso> cursos;
 
     public int getIdDocente() {
         return idDocente;
