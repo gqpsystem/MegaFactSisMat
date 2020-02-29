@@ -19,6 +19,10 @@ public class Curso {
     @Column(name = "credito",nullable = false,length = 10)
     private int credito;
 
+    @ManyToOne
+    @JoinColumn(name = "idTurno",nullable = false)
+    private Turno turno;
+
     public int getIdCurso() {
         return idCurso;
     }
@@ -49,5 +53,13 @@ public class Curso {
 
     public void setCredito(int credito) {
         this.credito = credito;
+    }
+
+    public Turno getTurno() {
+        return turno;
+    }
+
+    public void setTurno(Turno turno) {
+        this.turno = turno;
     }
 }
